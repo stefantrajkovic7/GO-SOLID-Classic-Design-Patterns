@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"io/ioutil"
 	"strings"
 )
 
@@ -12,6 +13,10 @@ type Journal struct {
 
 func (j *Journal) String() string {
 	return strings.Join(j.entries, "\n")
+}
+
+func (j *Journal) Save(filename string) {
+	_ = ioutil.WriteFile(filename, []byte(j.String()), 0644)
 }
 
 func (j *Journal) AddEntry(text string) int {
