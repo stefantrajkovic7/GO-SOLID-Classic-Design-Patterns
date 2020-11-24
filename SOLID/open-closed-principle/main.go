@@ -1,4 +1,6 @@
-package open_closed_principle
+package main
+
+import "fmt"
 
 type Color int
 type Size int
@@ -7,6 +9,12 @@ const (
 	red Color = iota
 	green
 	blue
+)
+
+const (
+	small Size = iota
+	medium
+	large
 )
 
 type Product struct {
@@ -31,4 +39,14 @@ func (f *Filter) FilterByColor(products []Product, color Color) []*Product {
 }
 
 func main() {
+	apple := Product{"Apple", green, small}
+	tree := Product{"Tree", green, large}
+	house := Product{"House", blue, large}
+
+	products := []Product{ apple, tree, house }
+	fmt.Printf("Green products (old:\n")
+	f := Filter{}
+	for _, v := range f.FilterByColor(products, green) {
+		fmt.Printf(" - %s is green\n", v.name)
+	}
 }
