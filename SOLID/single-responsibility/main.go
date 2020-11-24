@@ -1,6 +1,9 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"strings"
+)
 
 var entryCount = 0
 type Journal struct {
@@ -8,7 +11,7 @@ type Journal struct {
 }
 
 func (j *Journal) String() string {
-	
+	return strings.Join(j.entries, "\n")
 }
 
 func (j *Journal) AddEntry(text string) int {
