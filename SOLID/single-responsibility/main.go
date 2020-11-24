@@ -1,4 +1,4 @@
-package main
+package single_responsibility
 
 import (
 	"fmt"
