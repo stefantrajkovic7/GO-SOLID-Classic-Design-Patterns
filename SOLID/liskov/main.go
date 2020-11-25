@@ -1,5 +1,7 @@
 package main
 
+import "fmt"
+
 type Sized interface {
 	GetWidth() int
 	SetWidth(width int)
@@ -27,4 +29,17 @@ func (r *Rectangle) SetHeight(height int) {
 	r.height = height
 }
 
+func testIt(sized Sized) {
+	width := sized.GetWidth()
+	sized.SetHeight(10)
+	// rectangle
+	expectedResult := 10 * width
+	actualArea := sized.GetWidth() * sized.GetHeight()
+	fmt.Print("Expected an area of ", expectedResult, ", but got ", actualArea, "\n")
+}
+
+func main() {
+	rectangle := &Rectangle{2,3}
+	testIt(rectangle)
+}
 
